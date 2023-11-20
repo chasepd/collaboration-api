@@ -1,78 +1,91 @@
 version: '3.8'
 
 services:
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    ports:
+      - "80:80" # Assuming your gateway listens on port 80
+    networks:
+      - backend
+
   admin:
     build:
       context: ./admin
       dockerfile: Dockerfile
-    ports:
-      - "8001:8001"
+    networks:
+      - backend
 
   auth:
     build:
       context: ./auth
       dockerfile: Dockerfile
-    ports:
-      - "8002:8002"
+    networks:
+      - backend
 
   comments:
     build:
       context: ./comments
       dockerfile: Dockerfile
-    ports:
-      - "8003:8003"
+    networks:
+      - backend
 
   files:
     build:
       context: ./files
       dockerfile: Dockerfile
-    ports:
-      - "8004:8004"
+    networks:
+      - backend
 
   nlp:
     build:
       context: ./nlp
       dockerfile: Dockerfile
-    ports:
-      - "8005:8005"
+    networks:
+      - backend
 
   notifications:
     build:
       context: ./notifications
       dockerfile: Dockerfile
-    ports:
-      - "8006:8006"
+    networks:
+      - backend
 
   projects:
     build:
       context: ./projects
       dockerfile: Dockerfile
-    ports:
-      - "8007:8007"
+    networks:
+      - backend
 
   tasks:
     build:
       context: ./tasks
       dockerfile: Dockerfile
-    ports:
-      - "8008:8008"
+    networks:
+      - backend
 
   users:
     build:
       context: ./users
       dockerfile: Dockerfile
-    ports:
-      - "8009:8009"
+    networks:
+      - backend
 
   db:
     image: mysql:8.0
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: <DB_PASSWORD>
       MYSQL_DATABASE: task_management
-    ports:
-      - "3306:3306"
+    networks:
+      - backend
     volumes:
       - db_data:/var/lib/mysql
+
+networks:
+  backend:
+    driver: bridge
 
 volumes:
   db_data:
