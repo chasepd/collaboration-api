@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+
+  auth:
+    build:
+      context: ./auth
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"
+
+  comments:
+    build:
+      context: ./comments
+      dockerfile: Dockerfile
+    ports:
+      - "8003:8003"
+
+  files:
+    build:
+      context: ./files
+      dockerfile: Dockerfile
+    ports:
+      - "8004:8004"
+
+  nlp:
+    build:
+      context: ./nlp
+      dockerfile: Dockerfile
+    ports:
+      - "8005:8005"
+
+  notifications:
+    build:
+      context: ./notifications
+      dockerfile: Dockerfile
+    ports:
+      - "8006:8006"
+
+  projects:
+    build:
+      context: ./projects
+      dockerfile: Dockerfile
+    ports:
+      - "8007:8007"
+
+  tasks:
+    build:
+      context: ./tasks
+      dockerfile: Dockerfile
+    ports:
+      - "8008:8008"
+
+  users:
+    build:
+      context: ./users
+      dockerfile: Dockerfile
+    ports:
+      - "8009:8009"
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: task_management
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
