@@ -6,7 +6,7 @@ services:
       context: ./gateway
       dockerfile: Dockerfile
     ports:
-      - "80:80" # Assuming your gateway listens on port 80
+      - "80:8080"
     networks:
       - backend
 
