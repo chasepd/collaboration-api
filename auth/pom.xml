@@ -16,6 +16,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.7.0</version>
+        
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -37,6 +38,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.collaborationapi.auth.AuthService</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>
