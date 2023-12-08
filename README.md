@@ -1,6 +1,8 @@
 # collaboration-api
 RESTful API/Backend for managing tasks and projects, with a microservice for each function. Written in Java except for the NLP service which is written in Python.
 
+Mainly a practice project to keep skills sharp.
+
 ## Endpoints
 ### Authentication
 - POST /auth/register - Register a new user.
