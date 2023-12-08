@@ -14,34 +14,53 @@ services:
     build:
       context: ./admin
       dockerfile: Dockerfile
+    depends_on:
+      - db
     networks:
       - backend
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
   auth:
     build:
       context: ./auth
       dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
     networks:
       - backend
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
   comments:
     build:
       context: ./comments
       dockerfile: Dockerfile
+    depends_on:
+      - db
     networks:
       - backend
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
   files:
     build:
       context: ./files
       dockerfile: Dockerfile
+    depends_on:
+      - db
     networks:
       - backend
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
   nlp:
     build:
       context: ./nlp
       dockerfile: Dockerfile
+    depends_on:
+      - db
     networks:
       - backend
 
@@ -49,39 +68,63 @@ services:
     build:
       context: ./notifications
       dockerfile: Dockerfile
+    depends_on:
+      - db
     networks:
       - backend
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
   projects:
     build:
       context: ./projects
       dockerfile: Dockerfile
+    depends_on:
+      - db
     networks:
       - backend
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
   tasks:
     build:
       context: ./tasks
       dockerfile: Dockerfile
+    depends_on:
+      - db
     networks:
       - backend
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
   users:
     build:
       context: ./users
       dockerfile: Dockerfile
+    depends_on:
+      - db
     networks:
       - backend
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
   db:
     image: mysql:8.0
     environment:
-      MYSQL_ROOT_PASSWORD: <DB_PASSWORD>
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: task_management
     networks:
       - backend
     volumes:
       - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "-uroot", "-p${MYSQL_ROOT_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
 
 networks:
   backend:
