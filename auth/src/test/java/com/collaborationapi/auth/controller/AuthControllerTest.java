@@ -1,4 +1,4 @@
-package com.collaborationapi.controller;
+package com.collaborationapi.auth.controller;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -14,8 +14,6 @@ import com.collaborationapi.auth.service.UserService;
 import com.collaborationapi.auth.utils.PasswordUtils;
 import com.collaborationapi.auth.model.User;
 import com.collaborationapi.auth.AuthService;
-import com.collaborationapi.auth.controller.AuthController;
-import com.collaborationapi.auth.controller.MessageResponse;
 
 import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
