@@ -3,12 +3,8 @@ name: "CodeQL"
 on:
   push:
     branches: [ "main" ]
-    paths:
-      - auth/**
   pull_request:
     branches: [ "main" ]
-    paths:
-      - auth/**
   schedule:
     - cron: '37 3 * * 4'
 
@@ -42,6 +38,7 @@ jobs:
 
     - run: |
         mvn -f auth/pom.xml clean package
+        mvn -f gateway/pom.xml clean package
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
