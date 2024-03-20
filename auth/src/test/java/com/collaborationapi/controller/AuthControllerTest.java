@@ -29,6 +29,7 @@ public class AuthControllerTest {
     @MockBean
     private UserService userService;
 
+    @SuppressWarnings("null")
     @Test
     public void testRegisterUser_Success() throws Exception {
         // Prepare test data
@@ -42,12 +43,7 @@ public class AuthControllerTest {
         requestBody.put("email", "test@example.com");
 
         // Convert the Map to JSON string
-        String requestBodyJson = null;
-        try {
-                requestBodyJson = objectMapper.writeValueAsString(requestBody);
-        } catch (JsonProcessingException e) {
-                e.printStackTrace();
-        }
+        String requestBodyJson = objectMapper.writeValueAsString(requestBody);
 
         // Prepare mock request
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post("/auth/register")
@@ -60,6 +56,7 @@ public class AuthControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("success"));
     }
 
+    @SuppressWarnings("null")
     @Test
     public void testRegisterUser_UserAlreadyExists() throws Exception {
         // Prepare test data

@@ -3,7 +3,6 @@ package com.collaborationapi.auth.controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.ServerProperties.Reactive.Session;
 
 import com.collaborationapi.auth.utils.PasswordUtils;
 import com.collaborationapi.auth.model.User;
