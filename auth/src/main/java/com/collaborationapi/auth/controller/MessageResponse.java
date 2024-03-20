@@ -1,9 +1,9 @@
 package com.collaborationapi.auth.controller;
 
-public class ApiResponse {
+public class MessageResponse {
     private String message;
 
-    public ApiResponse(String message) {
+    public MessageResponse(String message) {
         this.message = message;
     }
 

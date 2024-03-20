@@ -57,6 +57,18 @@
             <artifactId>spring-retry</artifactId>
         </dependency>
 
+        <!-- Spring Session Core -->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-core</artifactId>
+        </dependency>
+
+        <!-- Spring Session JDBC -->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-jdbc</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

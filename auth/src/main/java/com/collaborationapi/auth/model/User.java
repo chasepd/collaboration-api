@@ -21,6 +21,17 @@ public class User {
     @Column(nullable = false)
     private String role;
 
+    public User() {
+        // This constructor is required by Hibernate
+    }
+
+    public User(String username, String passwordHash, String email) {
+        this.username = username;
+        this.passwordHash = passwordHash;
+        this.email = email;
+        this.role = "user";
+    }
+
     // Getters and setters
     public Long getId() {
         return id;
