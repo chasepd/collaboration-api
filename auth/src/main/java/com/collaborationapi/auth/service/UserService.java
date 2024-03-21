@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.dao.TransientDataAccessException;
+import org.springframework.lang.NonNull;
+
 import com.collaborationapi.auth.model.User;
 import org.springframework.retry.annotation.Backoff;
 
@@ -15,7 +17,7 @@ public class UserService {
     private UserRepository userRepository;
 
     @Retryable(value = TransientDataAccessException.class, maxAttempts = 5, backoff = @Backoff(delay = 5000))
-    public User findUserById(Long id) {
+    public User findUserById(@NonNull Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
@@ -30,17 +32,17 @@ public class UserService {
     }
 
     @Retryable(value = TransientDataAccessException.class, maxAttempts = 5, backoff = @Backoff(delay = 5000))
-    public User saveUser(User user) {
+    public User saveUser(@NonNull User user) {
         return userRepository.save(user);
     }
 
     @Retryable(value = TransientDataAccessException.class, maxAttempts = 5, backoff = @Backoff(delay = 5000))
-    public void deleteUser(User user) {
+    public void deleteUser(@NonNull User user) {
         userRepository.delete(user);
     }
 
     @Retryable(value = TransientDataAccessException.class, maxAttempts = 5, backoff = @Backoff(delay = 5000))
-    public void deleteUserById(Long id) {
+    public void deleteUserById(@NonNull Long id) {
         userRepository.deleteById(id);
     }
 }
