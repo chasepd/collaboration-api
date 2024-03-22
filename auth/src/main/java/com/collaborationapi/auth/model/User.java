@@ -18,9 +18,6 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(nullable = false)
-    private String role;
-
     public User() {
         // This constructor is required by Hibernate
     }
@@ -29,7 +26,6 @@ public class User {
         this.username = username;
         this.passwordHash = passwordHash;
         this.email = email;
-        this.role = "user";
     }
 
     // Getters and setters
@@ -49,10 +45,6 @@ public class User {
         return email;
     }
 
-    public String getRole() {
-        return role;
-    }
-
     // Setters
     public void setId(Long id) {
         this.id = id;
@@ -68,10 +60,6 @@ public class User {
 
     public void setEmail(String email){        
         this.email = email;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 }
 

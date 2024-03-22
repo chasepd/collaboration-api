@@ -21,7 +21,6 @@ public class UserTest {
         assertEquals(username, user.getUsername());
         assertEquals(passwordHash, user.getPasswordHash());
         assertEquals(email, user.getEmail());
-        assertEquals("user", user.getRole());
     }
 
     @Test
@@ -34,13 +33,11 @@ public class UserTest {
         user.setUsername("testuser");
         user.setPasswordHash("testpassword");
         user.setEmail("test@example.com");
-        user.setRole("admin");
 
         // Assert
         assertEquals(1L, user.getId());
         assertEquals("testuser", user.getUsername());
         assertEquals("testpassword", user.getPasswordHash());
         assertEquals("test@example.com", user.getEmail());
-        assertEquals("admin", user.getRole());
     }
 }

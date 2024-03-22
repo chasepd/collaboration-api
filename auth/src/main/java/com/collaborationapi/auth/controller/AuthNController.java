@@ -5,8 +5,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.collaborationapi.auth.utils.PasswordUtils;
+import com.collaborationapi.auth.model.Entitlements;
 import com.collaborationapi.auth.model.User;
 import com.collaborationapi.auth.service.UserService;
+import com.collaborationapi.auth.service.EntitlementsService;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,10 +19,12 @@ import javax.servlet.http.HttpSession;
 public class AuthNController {
 
     private final UserService userService;
+    private final EntitlementsService entitlementsService;
 
     @Autowired
-    public AuthNController(UserService userService) {
+    public AuthNController(UserService userService, EntitlementsService entitlementsService) {
         this.userService = userService;
+        this.entitlementsService = entitlementsService;
     }
 
     @GetMapping("/auth/health")
@@ -46,8 +50,11 @@ public class AuthNController {
             String pass_hash = PasswordUtils.hashPassword(password);
             user = new User(username, pass_hash, email);
             userService.saveUser(user);
+            Entitlements entitlements = new Entitlements(user.getId(), true, false, false, false, false, false);
+            entitlementsService.saveEntitlements(entitlements);
             HttpSession session = request.getSession();
             session.setAttribute("username", username);
+            session.setAttribute("userId", user.getId());
             SessionGrantResponse response = new SessionGrantResponse("success", session.getId());
             return ResponseEntity.ok(response);
         } catch (Exception e) {
