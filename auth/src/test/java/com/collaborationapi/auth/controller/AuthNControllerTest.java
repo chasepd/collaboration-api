@@ -11,6 +11,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.collaborationapi.auth.service.UserService;
+import com.collaborationapi.auth.service.EntitlementsService;
 import com.collaborationapi.auth.utils.PasswordUtils;
 import com.collaborationapi.auth.model.User;
 import com.collaborationapi.auth.AuthService;
@@ -31,15 +32,18 @@ import javax.servlet.http.HttpSession;
 import org.mockito.Mockito;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@WebMvcTest(AuthController.class)
+@WebMvcTest(AuthNController.class)
 @ContextConfiguration(classes = {AuthService.class})
-public class AuthControllerTest {
+public class AuthNControllerTest {
 
         @Autowired
         private MockMvc mockMvc;
 
         @MockBean
         private UserService userService;
+
+        @MockBean
+        private EntitlementsService entitlementsService;
 
         @SuppressWarnings("null")
         @Test
@@ -215,7 +219,7 @@ public class AuthControllerTest {
                 when(request.getSession()).thenReturn(session);
 
                 // Create instance of AuthController
-                AuthController controller = new AuthController(userService);
+                AuthNController controller = new AuthNController(userService, entitlementsService);
 
                 // Call the logoutUser method
                 ResponseEntity<MessageResponse> response = controller.logoutUser(request);
