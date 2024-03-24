@@ -26,19 +26,14 @@ Mainly a practice project to keep skills sharp.
 - PUT /projects/{projectId}/tasks/{taskId} - Update a task.
 - DELETE /projects/{projectId}/tasks/{taskId} - Delete a task.
 ### Comments
-- POST /tasks/{taskId}/comments - Add a comment to a task.
-- GET /tasks/{taskId}/comments - List comments on a task.
-- DELETE /tasks/{taskId}/comments/{commentId} - Delete a comment.
+- POST /projects/{projectId/tasks/{taskId}/comments - Add a comment to a task.
+- GET /projects/{projectId/tasks/{taskId}/comments - List comments on a task.
+- GET /projects/{projectId/tasks/{taskId}/comments/{commentId} - Get a single comment.
+- PUT /projects/{projectId/tasks/{taskId}/comments/{commentId} - Update a comment.
+- DELETE /projects/{projectId/tasks/{taskId}/comments/{commentId} - Delete a comment.
 ### NLP Service Integration
 - POST /nlp/summarize - Generate a summary for a given task description or comment thread.
 - POST /nlp/prioritize - Analyze task details and suggest a priority level.
 ### Notifications
 - GET /users/{userId}/notifications - Retrieve user's notifications.
 - POST /users/{userId}/notifications - Send a notification to a user.
-### File Management (for Attachments)
-- POST /tasks/{taskId}/attachments - Upload an attachment to a task.
-- GET /tasks/{taskId}/attachments - List attachments for a task.
-- DELETE /tasks/{taskId}/attachments/{attachmentId} - Delete an attachment.
-### Admin Operations
-- GET /admin/users - Admin view of all users.
-- GET /admin/projects - Admin view of all projects.
