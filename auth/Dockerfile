@@ -2,7 +2,7 @@
 FROM maven:3.8.4-openjdk-11-slim as builder
 
 # Copy the pom.xml and source code
-COPY ./pom.xml /usr/src/myapp/pom.xml
+COPY ./pom.xml /usr/src/app/pom.xml
 COPY ./src /usr/src/app/src
 
 # Set the working directory
@@ -15,7 +15,7 @@ RUN mvn clean package
 FROM openjdk:11-jre-slim
 
 # Copy the built artifact from the builder stage
-COPY --from=builder /usr/src/myapp/target/auth-1.0-SNAPSHOT.jar /usr/app/app.jar
+COPY --from=builder /usr/src/app/target/auth-1.0-SNAPSHOT.jar /usr/app/app.jar
 
 # Set the working directory
 WORKDIR /usr/app

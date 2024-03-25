@@ -1,0 +1,12 @@
+<context:annotation-config/>
+<bean class="org.springframework.session.jdbc.config.annotation.web.http.JdbcHttpSessionConfiguration"/>
+
+
+<jdbc:embedded-database id="dataSource" database-name="task_management" type="mysql">
+	<jdbc:script location="classpath:org/springframework/session/jdbc/schema-mysql.sql"/>
+</jdbc:embedded-database>
+
+
+<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<constructor-arg ref="dataSource"/>
+</bean>
