@@ -10,17 +10,6 @@ services:
     networks:
       - backend
 
-  admin:
-    build:
-      context: ./admin
-      dockerfile: Dockerfile
-    depends_on:
-      - db
-    networks:
-      - backend
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-
   auth:
     build:
       context: ./auth
@@ -36,17 +25,6 @@ services:
   comments:
     build:
       context: ./comments
-      dockerfile: Dockerfile
-    depends_on:
-      - db
-    networks:
-      - backend
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-
-  files:
-    build:
-      context: ./files
       dockerfile: Dockerfile
     depends_on:
       - db
