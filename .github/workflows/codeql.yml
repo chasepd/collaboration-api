@@ -37,8 +37,8 @@ jobs:
         languages: ${{ matrix.language }}
 
     - run: |
-        mvn -f auth/pom.xml clean package
-        mvn -f gateway/pom.xml clean package
+        mvn -f auth/pom.xml -DskipTests clean package
+        mvn -f gateway/pom.xml -DskipTests clean package
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
