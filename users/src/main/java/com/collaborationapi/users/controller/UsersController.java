@@ -49,11 +49,6 @@ public class UsersController {
 
         Iterable<User> users = userService.findAllUsers();
 
-        // Remove passwordHash field from response
-        for (User user : users) {
-            user.setPasswordHash("redacted");
-        }
-
         return ResponseEntity.ok(new ListResponse("success", users));
     }
     

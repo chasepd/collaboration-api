@@ -12,9 +12,6 @@ public class User {
     @Column(unique = true, nullable = false)
     private String username;
 
-    @Column(nullable = false)
-    private String passwordHash;
-
     @Column(unique = true, nullable = false)
     private String email;
 
@@ -22,9 +19,8 @@ public class User {
         // This constructor is required by Hibernate
     }
 
-    public User(String username, String passwordHash, String email) {
+    public User(String username, String email) {
         this.username = username;
-        this.passwordHash = passwordHash;
         this.email = email;
     }
 
@@ -35,10 +31,6 @@ public class User {
 
     public String getUsername() {
         return username;
-    }
-
-    public String getPasswordHash() {
-        return passwordHash;
     }
 
     public String getEmail() {
@@ -52,10 +44,6 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
     }
 
     public void setEmail(String email){        
