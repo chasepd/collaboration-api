@@ -1,4 +1,4 @@
-name: Auth Service Tests
+name: User Service Tests
 
 on:
   push:
