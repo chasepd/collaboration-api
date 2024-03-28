@@ -22,7 +22,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(AbstractHttpConfigurer::disable)
+            .csrf(AbstractHttpConfigurer::disable) // Disable CSRF because we are using JWT
             .authorizeHttpRequests(auth -> auth
                 .antMatchers("/auth/login", "/auth/register").permitAll()
                 .anyRequest().authenticated()
