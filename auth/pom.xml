@@ -29,13 +29,35 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.7.0</version>
         </dependency>
 
-        <!-- Spring Security -->
+        <!-- Spring Security Crypto -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-crypto</artifactId>
-            <version>5.7.1</version>
+            <version>5.7.12</version>
+        </dependency>
+
+        <!-- Spring Security Core -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>5.7.12</version>
+        </dependency>
+
+        <!-- Spring Security Web -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>5.7.12</version>
+        </dependency>
+
+        <!-- Spring Security Config -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>5.7.12</version>
         </dependency>
 
         <!-- Spring Data JPA -->
@@ -57,16 +79,11 @@
             <artifactId>spring-retry</artifactId>
         </dependency>
 
-        <!-- Spring Session Core -->
+        <!-- JWT -->
         <dependency>
-            <groupId>org.springframework.session</groupId>
-            <artifactId>spring-session-core</artifactId>
-        </dependency>
-
-        <!-- Spring Session JDBC -->
-        <dependency>
-            <groupId>org.springframework.session</groupId>
-            <artifactId>spring-session-jdbc</artifactId>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
         </dependency>
 
         <!-- Mockito -->
