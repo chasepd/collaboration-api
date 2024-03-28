@@ -24,7 +24,7 @@ public class SecurityConfig {
         http
             .csrf(AbstractHttpConfigurer::disable) // Disable CSRF because we are using JWT
             .authorizeHttpRequests(auth -> auth
-                .antMatchers("/auth/login", "/auth/register").permitAll()
+                .antMatchers("/auth/login", "/auth/register", "/auth/validateToken", "/auth/user_entitlements").permitAll()
                 .anyRequest().authenticated()
             )
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
