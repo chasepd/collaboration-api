@@ -20,6 +20,11 @@ public class JwtUtil {
         }
     }
 
+    // Constructor for testing
+    public JwtUtil(String secret) {
+        this.secret = secret;
+    }
+
     public String generateToken(String username) {
         return Jwts.builder()
                 .setSubject(username)
